@@ -54,6 +54,7 @@ public final class PaginationContextEngine {
         if (topProjectionSegment.isPresent()) {
             return new TopPaginationContextEngine().createPaginationContext(topProjectionSegment.get(), whereSegment.map(WhereSegment::getExpr).orElse(null), parameters);
         }
+        // 不可以走这里
         if (whereSegment.isPresent()) {
             return new RowNumberPaginationContextEngine().createPaginationContext(whereSegment.get().getExpr(), projectionsContext, parameters);
         }
